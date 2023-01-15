@@ -39,10 +39,9 @@ app.get('/invitation', (req, res) => {
 app.post('/send', (req, res) => {
   const output = `
   <div class="text-center text-success">
-    <h2>Wedding Wishes</h2> 
-      <h3>Name: ${req.body.name}</h3>
-    <h2>Message</h2>
-    <h3>${req.body.message}</h3>
+    <h2>Wishes From Your Dear One's : </h2>
+    <h3>Name : ${req.body.name}</h3>
+    <h3>Wishes : ${req.body.message}</h3>
 </div>
   `;
 
@@ -66,7 +65,7 @@ app.post('/send', (req, res) => {
       from: 'tarunianduday@gmail.com', // sender address
       to: 'arjunreddyseeram87@gmail.com', // list of receivers
       subject: 'Lovely Wishes', // Subject line
-      text: 'Hello world?', // plain text body
+      // text: 'Hello world?', // plain text body
       html: output // html body
   };
 
