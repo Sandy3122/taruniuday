@@ -8,7 +8,7 @@ const app = express();
 
 // View engine setup
 // app.engine('handlebars', exphbs());
-app.set('view engine', 'hbs');
+// app.set('view engine', 'hbs');
 
 
 // Static folder
@@ -23,14 +23,18 @@ app.use(bodyParser.json());
 
 //main page
 app.get('/', (req, res) => {
-  // res.sendFile(__dirname + '/views/contact.handlers');
-  res.render('index');
+  res.sendFile(__dirname + '/index.html');
+  // res.render('index');
 });
 
 app.get('/invitation', (req, res) => {
-  // res.sendFile(__dirname + '/views/contact.handlers');
-  res.render('invitation');
+  res.sendFile(__dirname + '/invitation.html');
+  // res.render('invitation');
 });
+// app.get('/temp', (req, res) => {
+//   res.send(alert("testing"));
+//   // res.render('invitation');
+// });
 
 app.post('/send', (req, res) => {
   const output = `
@@ -74,7 +78,9 @@ app.post('/send', (req, res) => {
       console.log('Message sent: %s', info.messageId);   
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      res.render('index', {successmsg:`Thank You So Much, ${req.body.name} Ji`});
+      // res.render('index', {successmsg:`Thank You So Much, ${req.body.name} Ji`});
+      res.send(`Thanks For Your Wishes, ${req.body.name} Ji`)
+
   });
   });
 
