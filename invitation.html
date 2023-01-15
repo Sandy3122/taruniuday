@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Wedding Invitation | Feb 10 | Taruni Weds Uday</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Dancing+Script&amp;display=swap'>
+    <link rel="stylesheet" href="/css/invitationStyles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="text-selection-disable">
+        <!-- partial:index.partial.html -->
+        <div class="sakura-falling audiplay"></div>
+        <img src="/assets/images/invitation/right.png" alt="image-top-right" class="top-right-decoration">
+        <img src="/assets/images/invitation/left.png" alt="image-top-left" class="top-left-decoration">
+        <!-- <img src="/assets/images/flowers/left-1.svg" alt="image-top-left" class="middle-left-decoration">
+    <img src="/assets/images/flowers/right-1.svg" alt="image-top-left" class="middle-right-decoration"> -->
+        <div class="img-footer">
+            <img src="/assets/images/invitation/left-bottom.png" alt="image-top-left" class="left-bottom-decoration">
+            <img src="/assets/images/invitation/right-bottom.png" alt="image-top-right" class="right-bottom-decoration">
+        </div>
+        <!-- https://i.imgur.com/t6ffnbn.png -->
+        <section id="media"></section>
+        <div>
+            <template>
+                <style>
+                    path {
+                        stroke: #f0394d;
+                    }
+
+                    #mute-icon.playbtn {
+                        background: transparent !important;
+                        padding: 0 !important;
+                    }
+
+                    button {
+                        background: none;
+                        color: inherit;
+                        border: none;
+                        padding: 0;
+                        font: inherit;
+                        cursor: pointer;
+                        outline: inherit;
+                    }
+
+                    svg {
+                        background-color: transparent !important;
+                        width: 30px !important;
+                        height: 30px !important;
+                    }
+
+                    .audio {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    #play-icon,
+                    #mute-icon {
+                        padding: 10px;
+                    }
+
+                </style>
+
+                <div><audio src="" autoplay loop></audio>
+                    <div class="audio">
+                        <button id="play-icon"></button>
+                        <button id="mute-icon"></button>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <div class="img">
+
+        </div>
+    </div>
+
+
+</body>
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src='https://cdn.jsdelivr.net/gh/timoschaefer/jQuery-Sakura/jquery-sakura.min.js'></script>
+<script src="/js//InvitationScript.js"></script>
+<script src="https://cdn.jsdeliver.net/gh/SH20RAJ/Audiplay/audiplay.js"></script>
+<!--Audio Tags-->
+<audio-player data-src="assets/mp3/song.mp3"></audio-player>
+<!-- JS CDN -->
+<script type="module" src="/js/audiplay.js"></script>
+<!-- Disable Inspect Element -->
+<script src="/js/disableInspectElement.js"></script>
+
+</html>
