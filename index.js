@@ -1,10 +1,15 @@
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
 // const exphbs = require('express-handlebars');
 const path = require('path');
 const nodemailer = require('nodemailer');
 
-const app = express();
+const popup = require('node-popup');
+const Swal = require('sweetalert2');
+const swal = require('sweetalert2/dist/sweetalert2.js');
+
+
 
 // View engine setup
 // app.engine('handlebars', exphbs());
@@ -31,10 +36,8 @@ app.get('/invitation', (req, res) => {
   res.sendFile(__dirname + '/invitation.html');
   // res.render('invitation');
 });
-// app.get('/temp', (req, res) => {
-//   res.send(alert("testing"));
-//   // res.render('invitation');
-// });
+
+
 
 app.post('/send', (req, res) => {
   const output = `
@@ -52,7 +55,7 @@ app.post('/send', (req, res) => {
     secure: false, // true for 465, false for other ports
     auth: {
         user: 'tarunianduday@gmail.com', // generated ethereal user
-        pass: 'wlvylwfusenplrsq'  // generated ethereal password
+        pass: 'elllonvepltyhkav'  // generated ethereal password
     },
     tls:{
       rejectUnauthorized:false
@@ -78,8 +81,53 @@ app.post('/send', (req, res) => {
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
       // res.render('index', {successmsg:`Thank You So Much, ${req.body.name} Ji`});
-      res.send(`Thanks For Your Wishes, ${req.body.name} Ji`)
-
+      res.send(`<!DOCTYPE html>
+      <html lang="en" class="no-js">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Taruni Weds Uday</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="description" content="We Are Getting Married" />
+        <meta name="keywords" content="Love For Eternity" />
+        <meta name="author" content="SEERAM SANDEEP" />
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+        <script src="js/bootstrap.min.js"></script>
+      </head>
+      <body>
+        <section id="story" class="our-story section-boxed section-bg-color">
+          <div class="container">
+            <div class="section-title">
+              <h2>Our Story</h2>
+            </div>
+            <div class="row story-row">
+              <div class="col-sm-12 col-md-5 story-block text-center">
+                <div class="story-image scale-image-effect">
+                  <img src="/assets/images/story_photo_1.jpg" class="rounded-circle" alt="">
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-2 story-block text-center">
+                <div class="story-date">
+                  <div style="margin-top: 38px" class="mb-4 year">T / U</div>
+                  <!-- <div class="month">Aug</div> -->
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-5 story-block text-center">
+                <h3>
+                  Dear, <strong>${req.body.message}</strong>, We thank you from the bottom of our hearts for your lovely wishes.
+                </h3>
+              <div>
+              <div class="vertical-line"></div>
+            </div>
+          </div>
+        </section>
+      </body>
+      </html>`)
   });
   });
 
