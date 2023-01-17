@@ -1,12 +1,8 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-// const exphbs = require('express-handlebars');
 const path = require('path');
 const nodemailer = require('nodemailer');
-
-
-
 
 
 // Static folder
@@ -44,7 +40,7 @@ app.post('/send', (req, res) => {
   let transporter = nodemailer.createTransport({
     pool: true,
     maxconnections: 10,
-    socketTimeout:1000000,
+    socketTimeout: 1000000,
     maxMessages: 'infinity',
     // ratelimit: 2,
     // rateDelta: 2000,
@@ -52,40 +48,40 @@ app.post('/send', (req, res) => {
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: 'arjunreddyseeram87@gmail.com', // generated ethereal user
-        pass: 'bjkrmibrotcwvkvv'  // generated ethereal password
+      user: 'arjunreddyseeram87@gmail.com', // generated ethereal user
+      pass: 'tofpmffyqehbogqg'  // generated ethereal password
     },
-    tls:{
-      rejectUnauthorized:false
+    tls: {
+      rejectUnauthorized: false
     }
 
   });
 
   // setup email data with unicode symbols
   let mailOptions = {
-      // from: 'arjunreddyseeram87@gmail.com', // sender address
-      from: req.body.email, // sender address
-      to: 'tarunianduday@gmail.com', // list of receivers
-      subject: 'Lovely Wishes', // Subject line
-      // text: req.body.message, // plain text body
-      replyTo: req.body.email,
-      html: output // html body
+    // from: 'arjunreddyseeram87@gmail.com', // sender address
+    from: 'arjunreddyseeram87@gmail.com', // sender address
+    to: 'tarunianduday@gmail.com', // list of receivers
+    subject: 'Lovely Wishes', // Subject line
+    // text: req.body.message, // plain text body
+    replyTo: req.body.email,
+    html: output // html body
   };
 
   // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-          return console.log(error);
-      }
-      console.log('Message sent: %s', info.messageId);   
-      console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    if (error) {
+      return console.log(error);
+    }
+    console.log('Message sent: %s', info.messageId);
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      res.send(`<html lang="en" class="no-js">
+    res.send(`<html lang="en" class="no-js">
 
       <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Taruni Weds Uday | Love For Eternity | We Are Getting Married | Feb 10 |</title>
+        <title>Taruni Weds Uday | Love For Eternity | We Are Getting Married | Feb 10 </title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -111,6 +107,6 @@ app.post('/send', (req, res) => {
       </body>
       </html>`)
   });
-  });
+});
 
 app.listen(8080, () => console.log('Server started...'));
