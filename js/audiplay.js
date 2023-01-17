@@ -1,5 +1,13 @@
 import lottieWeb from 'https://cdn.skypack.dev/pin/lottie-web@v5.10.1-fUebi8ILfVSpWAebd2cU/mode=imports/optimized/lottie-web.js';
 
+function _interopRequireDefault(module) {
+    const
+        isCJSModule = module && module.__esModule,
+        cjsStyedModule = { default: module };
+  
+    return isCJSModule ? module: cjsStyedModule;
+  }
+  
 
 class AudioPlayer extends HTMLElement {
     constructor() {
