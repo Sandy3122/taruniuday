@@ -1462,3 +1462,7 @@ ul.social-links li a:hover i {
     font-weight: 300px;
     padding: 35px 15px 15px 15px;
 }
+
+/* video::-webkit-media-controls-start-playback-button {
+    display: none;
+} */
