@@ -5,9 +5,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const nodemailer = require('nodemailer');
 
-const popup = require('node-popup');
-const Swal = require('sweetalert2');
-const swal = require('sweetalert2/dist/sweetalert2.js');
+// const cros = require('cors');
+// app.use(cros());
 
 
 
@@ -29,12 +28,10 @@ app.use(bodyParser.json());
 //main page
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
-  // res.render('index');
 });
 
 app.get('/invitation', (req, res) => {
   res.sendFile(__dirname + '/invitation.html');
-  // res.render('invitation');
 });
 
 
@@ -42,20 +39,27 @@ app.get('/invitation', (req, res) => {
 app.post('/send', (req, res) => {
   const output = `
   <div class="text-center text-success">
-    <h2>Wishes From Your Dear One's : </h2>
+    <h2>Wishes From Your Loved One's</h2>
     <h3>Name : ${req.body.name}</h3>
     <h3>Wishes : ${req.body.message}</h3>
-</div>
-  `;
+    <h3>Email : ${req.body.email}</h3>
+</div>`;
+
 
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
+    pool: true,
+    maxconnections: 10,
+    socketTimeout:1000000,
+    maxMessages: 'infinity',
+    // ratelimit: 2,
+    // rateDelta: 2000,
     host: 'smtp.gmail.com',
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: 'tarunianduday@gmail.com', // generated ethereal user
-        pass: 'elllonvepltyhkav'  // generated ethereal password
+        user: 'arjunreddyseeram87@gmail.com', // generated ethereal user
+        pass: 'bjkrmibrotcwvkvv'  // generated ethereal password
     },
     tls:{
       rejectUnauthorized:false
@@ -65,10 +69,12 @@ app.post('/send', (req, res) => {
 
   // setup email data with unicode symbols
   let mailOptions = {
-      from: 'tarunianduday@gmail.com', // sender address
-      to: 'arjunreddyseeram87@gmail.com', // list of receivers
+      // from: 'arjunreddyseeram87@gmail.com', // sender address
+      from: req.body.email, // sender address
+      to: 'tarunianduday@gmail.com', // list of receivers
       subject: 'Lovely Wishes', // Subject line
-      // text: 'Hello world?', // plain text body
+      // text: req.body.message, // plain text body
+      replyTo: req.body.email,
       html: output // html body
   };
 
@@ -80,52 +86,34 @@ app.post('/send', (req, res) => {
       console.log('Message sent: %s', info.messageId);   
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-      // res.render('index', {successmsg:`Thank You So Much, ${req.body.name} Ji`});
-      res.send(`<!DOCTYPE html>
-      <html lang="en" class="no-js">
+      res.send(`<html lang="en" class="no-js">
+
       <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Taruni Weds Uday</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <meta name="description" content="We Are Getting Married" />
-        <meta name="keywords" content="Love For Eternity" />
-        <meta name="author" content="SEERAM SANDEEP" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <link rel="shortcut icon" href="/favicon.ico">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/main.css" type="text/css">
-        <script src="js/bootstrap.min.js"></script>
       </head>
       <body>
-        <section id="story" class="our-story section-boxed section-bg-color">
+        <section id="story" class="our-story section-boxed section-bg-color border-top-5 border-bottom-0">
           <div class="container">
-            <div class="section-title">
-              <h2>Our Story</h2>
-            </div>
-            <div class="row story-row">
-              <div class="col-sm-12 col-md-5 story-block text-center">
+            <div class="row">
+              <div class="col-sm-12 col-md-6 mb-5 story-block text-center">
                 <div class="story-image scale-image-effect">
-                  <img src="/assets/images/story_photo_1.jpg" class="rounded-circle" alt="">
+                  <img src="/assets/images/thankyou.jpg" class="rounded-circle" alt="">
                 </div>
               </div>
-              <div class="col-sm-12 col-md-2 story-block text-center">
-                <div class="story-date">
-                  <div style="margin-top: 38px" class="mb-4 year">T / U</div>
-                  <!-- <div class="month">Aug</div> -->
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-5 story-block text-center">
+              <div class="col-sm-12 col-md-6 story-block text-center d-flex justify-content-center align-items-center">
                 <h3>
-                  Dear, <strong>${req.body.message}</strong>, We thank you from the bottom of our hearts for your lovely wishes.
+                  Dear, <strong> ${req.body.name} </strong> Ji, We really thank you from the bottom of our hearts for your lovely wishes.
                 </h3>
-              <div>
-              <div class="vertical-line"></div>
-            </div>
-          </div>
+                <br>
+              </div>
         </section>
+        <center><a href="/"><button class="button small-button">Back</button></a></center>
       </body>
       </html>`)
   });

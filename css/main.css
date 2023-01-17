@@ -123,30 +123,6 @@ img {
     visibility: hidden
 }
 
-/* input[type=submit],
-input[type=button],
-button,
-a.button {
-    display: inline-block;
-    position: relative;
-    padding: .8em 2em;
-    margin-bottom: .25em;
-    font-size: 1em;
-    font-weight: 400;
-    line-height: 1.2;
-    border: 0;
-    outline: 0;
-    border: 2px solid #e65959;
-    color: #353535;
-    text-shadow: none;
-    text-decoration: none;
-    background: 0 0;
-    border-radius: 4px;
-    font-family: roboto, Helvetica, sans-serif;
-    -webkit-transition-duration: .3s;
-    transition-duration: .3s
-} */
-
 input[type=submit],
 input[type=button],
 button,
@@ -168,8 +144,8 @@ a.button {
     /* background: #119ffd; */
     border-radius: 4px;
     font-family: roboto, Helvetica, sans-serif;
-    /* -webkit-transition-duration: .3s;
-    transition-duration: .3s; */
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s;
     cursor: pointer;
     transition: ease-out 0.5s;
     box-shadow: inset 0 0 0 0 #303439;
@@ -920,7 +896,7 @@ ul.social-links li a:hover i {
     border-top: 0;
     padding: 30px 20px;
     margin: 0 0 20px;
-    font-weight: 300
+    font-weight: 300;
 }
 
 .event-block:last-child .event-info {
@@ -957,7 +933,7 @@ ul.social-links li a:hover i {
     background: rgba(53, 53, 53, .6);
     display: inline-block;
     font-family: pe-icon-7-stroke;
-    speak: none;
+    /* speak: none; */
     font-style: normal;
     font-weight: 400;
     font-variant: normal;
@@ -1485,10 +1461,4 @@ ul.social-links li a:hover i {
     text-transform: capitalize;
     font-weight: 300px;
     padding: 35px 15px 15px 15px;
-}
-
-/* Live Video Block */
-
-.myVideo{
-    -webkit-animation: run-loop 5s linear infinite;
 }
