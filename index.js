@@ -5,14 +5,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const nodemailer = require('nodemailer');
 
-// const cros = require('cors');
-// app.use(cros());
 
 
-
-// View engine setup
-// app.engine('handlebars', exphbs());
-// app.set('view engine', 'hbs');
 
 
 // Static folder

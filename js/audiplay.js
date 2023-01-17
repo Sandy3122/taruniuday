@@ -1,4 +1,5 @@
-import lottieWeb from 'https://cdn.skypack.dev/lottie-web';
+// import lottieWeb from 'https://cdn.skypack.dev/lottie-web';
+import lottieWeb from "/js/lottieweb.js";
 
 class AudioPlayer extends HTMLElement {
     constructor() {
