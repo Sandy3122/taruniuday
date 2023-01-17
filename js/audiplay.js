@@ -65,31 +65,9 @@ const everything = function(element) {
         const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
         return `${minutes}:${returnedSeconds}`;
     }
-        
-    const displayDuration = () => {
-        durationContainer.textContent = calculateTime(audio.duration);
-    }
-        
-    const setSliderMax = () => {
-        seekSlider.max = Math.floor(audio.duration);
-    }
-        
-    const displayBufferedAmount = () => {
-        const bufferedAmount = Math.floor(audio.buffered.end(audio.buffered.length - 1));
-        audioPlayerContainer.style.setProperty('--buffered-width', `${(bufferedAmount / seekSlider.max) * 100}%`);
-    }
 
-    if (audio.readyState > 0) {
-        displayDuration();
-        setSliderMax();
-        displayBufferedAmount();
-    } else {
-        audio.addEventListener('loadedmetadata', () => {
-            displayDuration();
-            setSliderMax();
-            displayBufferedAmount();
-        });
-    }
+        
+        
 
     playIconContainer.addEventListener('click', () => {
         if(playState === 'play') {
@@ -117,29 +95,6 @@ const everything = function(element) {
         }
     });
 
-    audio.addEventListener('progress', displayBufferedAmount);
-
-    seekSlider.addEventListener('input', (e) => {
-        showRangeProgress(e.target);
-        currentTimeContainer.textContent = calculateTime(seekSlider.value);
-        if(!audio.paused) {
-            cancelAnimationFrame(raf);
-        }
-    });
-
-    seekSlider.addEventListener('change', () => {
-        audio.currentTime = seekSlider.value;
-        if(!audio.paused) {
-            requestAnimationFrame(whilePlaying);
-        }
-    });
-
-    volumeSlider.addEventListener('input', (e) => {
-        const value = e.target.value;
-        showRangeProgress(e.target);
-        outputContainer.textContent = value;
-        audio.volume = value / 100;
-    });
 
     if('mediaSession' in navigator) {
         navigator.mediaSession.metadata = new MediaMetadata({

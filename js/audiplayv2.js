@@ -32,7 +32,7 @@ const everything = function(element) {
         // renderer: 'svg',
         // Background: 'black !important',
         loop: false,
-        autoplay: false,
+        autoplay: true,
         name: "Play Animation",
     });
           

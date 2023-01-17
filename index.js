@@ -113,7 +113,7 @@ app.post('/send', (req, res) => {
                 <br>
               </div>
         </section>
-        <center><a href="/"><button class="button small-button">Back</button></a></center>
+        <center><a href="/#rsvp"><button class="button small-button">Back</button></a></center>
       </body>
       </html>`)
   });
