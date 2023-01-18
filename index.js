@@ -39,28 +39,29 @@ app.post('/send', (req, res) => {
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
     pool: true,
-    maxconnections: 10,
-    socketTimeout: 1000000,
-    maxMessages: 'infinity',
+    // maxconnections: 10,
+    // socketTimeout: 1000000,
+    // maxMessages: 'infinity',
     // ratelimit: 2,
     // rateDelta: 2000,
     host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // true for 465, false for other ports
+    // host: 'my.smtp.host',
+    port: 465,
+    secure: true, // true for 465, false for other ports
     auth: {
-      user: 'arjunreddyseeram87@gmail.com', // generated ethereal user
-      pass: 'tofpmffyqehbogqg'  // generated ethereal password
+      user: 'tarunianduday@gmail.com', // generated ethereal user
+      pass: 'bjqivasphixwayel'  // generated ethereal password
     },
-    tls: {
-      rejectUnauthorized: false
-    }
+    // tls: {
+    //   rejectUnauthorized: false
+    // }
 
   });
 
   // setup email data with unicode symbols
   let mailOptions = {
     // from: 'arjunreddyseeram87@gmail.com', // sender address
-    from: 'arjunreddyseeram87@gmail.com', // sender address
+    from: 'tarunianduday@gmail.com', // sender address
     to: 'tarunianduday@gmail.com', // list of receivers
     subject: 'Lovely Wishes', // Subject line
     // text: req.body.message, // plain text body
