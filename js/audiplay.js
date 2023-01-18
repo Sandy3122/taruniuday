@@ -1,4 +1,4 @@
-// import lottieWeb from 'https://cdn.skypack.dev/pin/lottie-web@v5.10.1-fUebi8ILfVSpWAebd2cU/mode=imports/optimized/lottie-web.js';
+// import lottie from 'https://cdn.skypack.dev/pin/lottie-web@v5.10.1-fUebi8ILfVSpWAebd2cU/mode=imports/optimized/lottie-web.js';
 
 
 class AudioPlayer extends HTMLElement {
@@ -27,7 +27,7 @@ const everything = function(element) {
 
     audio.src = element.getAttribute('data-src');
 
-    const playAnimation = lottieWeb.loadAnimation({
+    const playAnimation = lottie.loadAnimation({
         container: playIconContainer,
         path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
         // renderer: 'svg',
@@ -37,7 +37,7 @@ const everything = function(element) {
         name: "Pause Animation",
     });
           
-    const muteAnimation = lottieWeb.loadAnimation({
+    const muteAnimation = lottie.loadAnimation({
         container: muteIconContainer,
         path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/mute/mute.json',
         // renderer: 'svg',
