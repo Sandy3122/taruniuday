@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const nodemailer = require('nodemailer');
-
+port = 8080
 
 // Static folder
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
@@ -110,4 +110,4 @@ app.post('/send', (req, res) => {
   });
 });
 
-app.listen(8080, () => console.log('Server started...'));
+app.listen(port, () => console.log("Successfully Server Started And Listening To Server Port :",port));
