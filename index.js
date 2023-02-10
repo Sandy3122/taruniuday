@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 //main page
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');gitr 
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/invitation', (req, res) => {
