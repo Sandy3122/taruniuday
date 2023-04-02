@@ -50,7 +50,7 @@ app.post('/send', (req, res) => {
     secure: true, // true for 465, false for other ports
     auth: {
       user: 'tarunianduday@gmail.com', // generated ethereal user
-      pass: 'fdxcutqzqsjtmcva'  // generated ethereal password
+      pass: 'merafvawkstibhfy'  // generated ethereal password
     },
     // tls: {
     //   rejectUnauthorized: false
@@ -61,7 +61,7 @@ app.post('/send', (req, res) => {
   // setup email data with unicode symbols
   let mailOptions = {
     // from: 'arjunreddyseeram87@gmail.com', // sender address
-    from: 'tarunianduday@gmail.com', // sender address
+    from: 'req.body.email', // sender address
     to: 'tarunianduday@gmail.com', // list of receivers
     subject: 'Lovely Wishes', // Subject line
     // text: req.body.message, // plain text body
